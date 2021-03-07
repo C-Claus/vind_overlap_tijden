@@ -1,12 +1,17 @@
 # Vind overlappende tijden
 Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma toont vervolgens of afwezigheidsperiodes elkaar overlappen.
 
-Visuele weergave
+
+Een strokenplanning laat zien aan de gebruiker waar de tijden elkaar raken.
 
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="800"/>
 
+Door de begintijd en eindtijd te markeren met rode standlijnen is inzichtelijk hoe deze weergave zich verhoudt tot het datamodel
+
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/01_overzicht.PNG" alt="drawing" width="800"/>
+
+Door de overlap te arceren kan het iets duidelijker worden waar de overlappingen zich bevinden
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/02_overzicht.PNG" alt="drawing" width="800"/>
 
