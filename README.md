@@ -3,7 +3,8 @@ Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het prog
 
 Visuele weergave
 
-<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.png" alt="drawing" width="600"/>
+
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="600"/>
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/01_overzicht.png" alt="drawing" width="600"/>
 
