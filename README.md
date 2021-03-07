@@ -52,7 +52,7 @@ class Aanwezigheid(models.Model):
         verbose_name_plural = "Aanwezigheid"
 ```
 
-De volgende records uit het "Aanwezigheid" datamodel zullen gebruikt worden als voorbeeld om overlappende tijden te vinden.
+De volgende records uit het ```Aanwezigheid``` datamodel zullen gebruikt worden als voorbeeld om overlappende tijden te vinden.
 
 | id        | datum           | begintijd  | eindtijd | status| persoon_id
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
