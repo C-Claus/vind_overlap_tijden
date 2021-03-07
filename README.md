@@ -104,8 +104,9 @@ def aanwezigheid(response, persoon):
 
     persoon = Personen.objects.get(id=persoon)
     persoon_id = Personen.objects.filter(account_id=response.user.id).values_list('id', flat=True)[0]
+    
+    #haalt het formulier op uit forms.py
     aanwezigheid_form = AanwezigheidsForm(initial={'persoon': persoon,  'status':'Actief'})
-
     aanwezigheid_form.fields['status'].widget = forms.HiddenInput()
     aanwezigheid_form.fields['persoon'].widget = forms.HiddenInput()
 
@@ -132,3 +133,15 @@ def aanwezigheid(response, persoon):
                                                                "persoon":persoon}
                                                                )
 ```
+
+
+# urls.py
+
+In de urls.py worden de views aangeroepen, hier kunnen de diverse urls ook worden naamgegeven
+
+```python
+urlpatterns =   [   path('aanwezigheid/<int:persoon>', views.aanwezigheid, name="aanwezigheid"),
+                    path('aanwezigheids_overzicht/<int:persoon_id>/<int:jaar>/<int:maand>/<int:dag>', views.aanwezigheids_overzicht, name="aanwezigheids_overzicht"),
+                    path('aanwezigheids_overzicht_per_dag', views.aanwezigheid_dagoverzicht, name="aanwezigheid_dagoverzicht"),
+                 ]
+```                    
