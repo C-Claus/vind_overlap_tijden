@@ -4,6 +4,7 @@ Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het prog
 
 Een strokenplanning laat zien aan de gebruiker waar de tijden elkaar raken.
 
+# Visuele weergave
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="800"/>
 
@@ -196,3 +197,18 @@ urlpatterns =   [   path('aanwezigheid/<int:persoon>', views.aanwezigheid, name=
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/aanwezigheids_overzicht_per_dag.png" alt="drawing" width="300"/>
 
+
+# Benadering 
+
+Er zijn meerdere manier mogelijk om de raakvlakken te vinden, mijn idee is om een standlijn per minuut te laten itereren door de dag.
+
+
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="800"/>
+
+Door de begintijd en eindtijd te markeren met rode standlijnen is inzichtelijk hoe deze weergave zich verhoudt tot het datamodel
+
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/01_overzicht.PNG" alt="drawing" width="800"/>
+
+Door de overlap te arceren kan het iets duidelijker worden waar de overlappingen zich bevinden
+
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/02_overzicht.PNG" alt="drawing" width="800"/>
