@@ -248,4 +248,27 @@ De output van ```python minuten ``` list
 2021-03-07 18:00
 ```
 
+De volgende stap is om van alle gebruikers die hun afwezigheid hebben opgegeven voor die dag een tijddelta Δt
+Δt Harm = [eindtijd-begintijd]
+Δt Thijs = [eindtijd-begintijd]
+Δt Coen = [eindtijd-begintijd]
 
+Waarbij de waarde van [eindtijd-begintijd] een list is in minuten
+
+```python
+##########################################################
+### 2 defineer een verzameling  van tijddeltas per key ###
+##########################################################
+
+persoon_minuten_delta_list  = []
+vandaag  = datetime.datetime(jaar, maand, dag)
+
+for i in afwezigheid_per_dag:
+    start = date_time.combine(vandaag, i.begintijd)
+    seconds = (date_time.combine(vandaag, i.eindtijd) - date_time.combine(vandaag, i.begintijd)).total_seconds()
+
+    step = timedelta(minutes=1)
+
+    for j in range(0, int(seconds)+60, int(step.total_seconds())):
+        persoon_minuten_delta_list.append([str(i.persoon) + " begintijd:" + str(i.begintijd) + " eindtijd:" +  str(i.eindtijd) ,  (start) + (timedelta(seconds=j))])
+```
