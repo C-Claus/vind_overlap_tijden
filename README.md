@@ -2,9 +2,11 @@
 Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma toont vervolgens of afwezigheidsperiodes elkaar overlappen.
 
 
-Een strokenplanning laat zien aan de gebruiker waar de tijden elkaar raken.
+
 
 # Visuele weergave
+
+Een strokenplanning laat zien aan de gebruiker waar de tijden elkaar raken.
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="800"/>
 
