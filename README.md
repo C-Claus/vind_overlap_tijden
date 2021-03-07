@@ -303,35 +303,13 @@ vandaag  = datetime.datetime(jaar, maand, dag)
                 persoon_overige_dict[i.persoon.naam] = persoon_overige_minuten_delta_list
 ```
 
-Output persoon_minuten_delta_list
+Output ```python persoon_ingelogd_dict```
 
 ```python
-
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 0)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 1)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 2)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 3)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 4)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 5)]
-....
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 57)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 58)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 59)]
-['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 10, 0)]
-['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 9, 30)]
-['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 9, 31)]
-['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 9, 32)]
-...
-['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 10, 58)]
-['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 10, 59)]
-['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 11, 0)]
-['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 9, 15)]
-['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 9, 16)]
-['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 9, 17)]
-....
-['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 10, 28)]
-['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 10, 29)]
-['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 10, 30)]
+Coen [['Coen', datetime.datetime(2021, 3, 7, 9, 15)], ['Coen', datetime.datetime(2021, 3, 7, 9, 16)], ['Coen', datetime.datetime(2021, 3, 7, 9, 17)], ['Coen', datetime.datetime(2021, 3, 7, 9, 18)], ['Coen', datetime.datetime(2021, 3, 7, 9, 19)], ['Coen', datetime.datetime(2021, 3, 7, 9, 20)], ['Coen', datetime.datetime(2021, 3, 7, 9, 21)], ['Coen', datetime.datetime(2021, 3, 7, 9, 22)], ['Coen', datetime.datetime(2021, 3, 7, 9, 23)], ['Coen', datetime.datetime(2021, 3, 7, 9, 24)], ['Coen', datetime.datetime(2021, 3, 7, 9, 25)], ['Coen', datetime.datetime(2021, 3, 7, 9, 26)], ['Coen', datetime.datetime(2021, 3, 7, 9, 27)], ['Coen', datetime.datetime(2021, 3, 7, 9, 28)], ['Coen', datetime.datetime(2021, 3, 7, 9, 29)], ['Coen', datetime.datetime(2021, 3, 7, 9, 30)], ['Coen', datetime.datetime(2021, 3, 7, 9, 31)], ['Coen', datetime.datetime(2021, 3, 7, 9, 32)], ['Coen', datetime.datetime(2021, 3, 7, 9, 33)], ['Coen', datetime.datetime(2021, 3, 7, 9, 34)], ['Coen', datetime.datetime(2021, 3, 7, 9, 35)], ['Coen', datetime.datetime(2021, 3, 7, 9, 36)], ['Coen', datetime.datetime(2021, 3, 7, 9, 37)], ['Coen', datetime.datetime(2021, 3, 7, 9, 38)], ['Coen', datetime.datetime(2021, 3, 7, 9, 39)], ['Coen', datetime.datetime(2021, 3, 7, 9, 40)], ['Coen', datetime.datetime(2021, 3, 7, 9, 41)], ['Coen', datetime.datetime(2021, 3, 7, 9, 42)], ['Coen', datetime.datetime(2021, 3, 7, 9, 43)], ['Coen', datetime.datetime(2021, 3, 7, 9, 44)], ['Coen', datetime.datetime(2021, 3, 7, 9, 45)], ['Coen', datetime.datetime(2021, 3, 7, 9, 46)], ['Coen', datetime.datetime(2021, 3, 7, 9, 47)], ['Coen', datetime.datetime(2021, 3, 7, 9, 48)], ['Coen', datetime.datetime(2021, 3, 7, 9, 49)], ['Coen', datetime.datetime(2021, 3, 7, 9, 50)], ['Coen', datetime.datetime(2021, 3, 7, 9, 51)], ['Coen', datetime.datetime(2021, 3, 7, 9, 52)], ['Coen', datetime.datetime(2021, 3, 7, 9, 53)], ['Coen', datetime.datetime(2021, 3, 7, 9, 54)], ['Coen', datetime.datetime(2021, 3, 
+7, 9, 55)], ['Coen', datetime.datetime(2021, 3, 7, 9, 56)], ['Coen', datetime.datetime(2021, 3, 7, 9, 57)], ['Coen', datetime.datetime(2021, 3, 7, 9, 58)], ['Coen', datetime.datetime(2021, 3, 7, 9, 59)], ['Coen', datetime.datetime(2021, 3, 7, 10, 0)], ['Coen', datetime.datetime(2021, 3, 7, 10, 1)], ['Coen', datetime.datetime(2021, 3, 7, 10, 2)], ['Coen', datetime.datetime(2021, 3, 7, 10, 3)], ['Coen', datetime.datetime(2021, 3, 7, 10, 4)], ['Coen', datetime.datetime(2021, 3, 7, 10, 5)], ['Coen', datetime.datetime(2021, 3, 7, 10, 6)], ['Coen', datetime.datetime(2021, 3, 7, 10, 7)], ['Coen', datetime.datetime(2021, 3, 7, 10, 8)], ['Coen', datetime.datetime(2021, 3, 7, 10, 9)], ['Coen', datetime.datetime(2021, 3, 7, 10, 10)], ['Coen', datetime.datetime(2021, 3, 7, 10, 11)], ['Coen', datetime.datetime(2021, 3, 7, 10, 12)], ['Coen', datetime.datetime(2021, 3, 7, 10, 13)], ['Coen', datetime.datetime(2021, 3, 7, 10, 14)], ['Coen', datetime.datetime(2021, 3, 7, 10, 15)], ['Coen', datetime.datetime(2021, 3, 7, 10, 16)], ['Coen', datetime.datetime(2021, 3, 7, 10, 17)], ['Coen', datetime.datetime(2021, 3, 7, 10, 18)], ['Coen', datetime.datetime(2021, 3, 7, 10, 19)], ['Coen', datetime.datetime(2021, 3, 7, 10, 20)], ['Coen', datetime.datetime(2021, 3, 7, 10, 21)], ['Coen', datetime.datetime(2021, 3, 
+7, 10, 22)], ['Coen', datetime.datetime(2021, 3, 7, 10, 23)], ['Coen', datetime.datetime(2021, 3, 7, 10, 24)], ['Coen', datetime.datetime(2021, 3, 7, 10, 25)], ['Coen', datetime.datetime(2021, 3, 7, 10, 26)], ['Coen', 
+datetime.datetime(2021, 3, 7, 10, 27)], ['Coen', datetime.datetime(2021, 3, 7, 10, 28)], ['Coen', datetime.datetime(2021, 3, 7, 10, 29)], ['Coen', datetime.datetime(2021, 3, 7, 10, 30)]]
 ```
 
 De volgende stap is om te controleren in deze list waar de minuten overeenkomen per persoon
