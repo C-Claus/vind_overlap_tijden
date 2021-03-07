@@ -261,9 +261,9 @@ De output van ```python minuten ``` list
 ```
 
 De volgende stap is om van alle gebruikers die hun afwezigheid hebben opgegeven voor die dag een tijddelta Δt
-Δt Harm = [eindtijd-begintijd]
-Δt Thijs = [eindtijd-begintijd]
-Δt Coen = [eindtijd-begintijd]
+* Δt Harm = [eindtijd-begintijd] 
+* Δt Thijs = [eindtijd-begintijd]
+* Δt Coen = [eindtijd-begintijd]
 
 Waarbij de waarde van [eindtijd-begintijd] een list is in minuten
 
