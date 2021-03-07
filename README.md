@@ -9,7 +9,7 @@ Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het prog
 # Definitie datamodel
 Er zijn twee datamodellen gedefinieerd voor dit programma, "Personen" en "Aanwezigheid"
 
-Het "Personen" datamodel
+Het ```pythonPersonen``` datamodel
 
 ```python
 class Personen(models.Model):
@@ -34,7 +34,7 @@ class Personen(models.Model):
         return self.naam
 ```
 
-Het "Aanwezigheid datamodel
+Het ```python Aanwezigheid``` datamodel
 
 ```python
 class Aanwezigheid(models.Model):
