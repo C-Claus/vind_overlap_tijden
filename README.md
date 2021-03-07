@@ -199,13 +199,25 @@ urlpatterns =   [   path('aanwezigheid/<int:persoon>', views.aanwezigheid, name=
 
 # Benadering 
 
-Er zijn meerdere manier mogelijk om de raakvlakken te vinden, mijn idee is om een standlijn per minuut te laten itereren door de dag.
-Even een recap van bovenstaande afbeeldingen ter geheugenondersteuning
-<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="800"/>
+Er zijn meerdere manieren mogelijk om de raakvlakken te vinden, mijn idee is om een minuut_standlijn per minuut te laten itereren door de dag.
+Als de minuut_standlijn zich bevind in een tijddelta van een gebruiker.
+Een dictionary is hier het meest geschikt voor waarbij: key=persoon, value=tijddelta_minuten
 
-Door de begintijd en eindtijd te markeren met rode standlijnen is inzichtelijk hoe deze weergave zich verhoudt tot het datamodel
 
-<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/01_overzicht.PNG" alt="drawing" width="800"/>
+in pseudocode:
+```python
+uit het datamodel komt het volgende:
+"Harm": ["begintijd, 9:00", "eindtijd: 10:00"],
+"Thijs": ["begintijd, 9:30", "eindtijd: 11:00"],
+"Coen": ["begintijd, 9:15", "eindtijd: 10:00"]
+            
+            
+afwezigheid_dict = {
+            "Harm":['9:00','9:01',...','9:59''10:00]
+            "Thijs":['9:30,,'9:31',....,',10:59,'11:00']]
+            "Coen": ['9:15,''9:16',...','9:59', '10:00']]
+             }
+```
 
 Door de overlap te arceren kan het iets duidelijker worden waar de overlappingen zich bevinden
 
@@ -272,3 +284,35 @@ for i in afwezigheid_per_dag:
     for j in range(0, int(seconds)+60, int(step.total_seconds())):
         persoon_minuten_delta_list.append([str(i.persoon) + " begintijd:" + str(i.begintijd) + " eindtijd:" +  str(i.eindtijd) ,  (start) + (timedelta(seconds=j))])
 ```
+
+Output persoon_minuten_delta_list
+
+```python
+
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 0)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 1)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 2)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 3)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 4)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 5)]
+....
+'Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 57)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 58)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 59)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 10, 0)]
+['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 9, 30)]
+['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 9, 31)]
+['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 9, 32)]
+...
+['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 10, 58)]
+['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 10, 59)]
+['Thijs  begintijd:09:30:00 eindtijd:11:00:00', datetime.datetime(2021, 3, 7, 11, 0)]
+['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 9, 15)]
+['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 9, 16)]
+['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 9, 17)]
+....
+['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 10, 28)]
+['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 10, 29)]
+['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 10, 30)]
+```
+
