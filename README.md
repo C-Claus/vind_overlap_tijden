@@ -133,7 +133,25 @@ def aanwezigheid(response, persoon):
                                                                "persoon":persoon}
                                                                )
 ```
+# templates.py 
 
+```html
+{% include "claus_portaal/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<form method='POST'>
+  {% csrf_token %}
+  {{ aanwezigheid_form | crispy }}
+  <hr>
+  <button type="submit" name="save" class="btn btn-outline-secondary btn-block">Registreer afwezigheid</button>
+</form>
+
+
+{% endif %}
+{% endblock %}
+```
 
 # urls.py
 
