@@ -6,7 +6,7 @@ Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het prog
 * Django 3.0.6 (inclusief crispy_forms, tables2, CDN bootstrap en Google Charts)
 
 
-# Definitie datamodel
+# models.py (Definitie datamodel)
 Er zijn twee datamodellen gedefinieerd voor dit programma, "Personen" en "Aanwezigheid"
 
 Het ```Personen``` datamodel
@@ -54,6 +54,7 @@ class Aanwezigheid(models.Model):
 
 De volgende records uit het ```Aanwezigheid``` datamodel zullen gebruikt worden als voorbeeld om overlappende tijden te vinden.
 
+
 | id        | datum           | begintijd  | eindtijd | status| persoon_id
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
 | 22|2021-03-08|09:00:00|10:00:00|Actief|2 |
@@ -61,7 +62,7 @@ De volgende records uit het ```Aanwezigheid``` datamodel zullen gebruikt worden 
 | 25|2021-03-07|09:30:00|11:00:00|Actief|2 |
 
 
-# forms
+# forms.py 
 
 Met een Model based form kan snel een HTML formulier gedefinieerd worden met bootstrap stijl
 
@@ -88,4 +89,6 @@ class AanwezigheidsForm(ModelForm):
         widgets = {'datum':DateInput(), 'begintijd':TimeInput(),'eindtijd':TimeInput()}  
 ```
 
+# views.py
 
+In views.py kunnen de bewerkingen gedaan
