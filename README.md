@@ -1,9 +1,9 @@
 # Vind overlappende tijden
 Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma toont vervolgens of afwezigheidsperiodes elkaar overlappen.
 
-# gebruikte tools
+# Gebruikte tools
 * Python 3.8
-* Django 3.0.6
+* Django 3.0.6 (inclusief crispy_forms, tables2, CDN bootstrap en Google Charts)
 
 
 # Definitie datamodel
