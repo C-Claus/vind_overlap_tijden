@@ -13,6 +13,27 @@ Django 3.0.6
 
 # Definitie datamodel
 
+```python
+from django.db import models
+
+from claus_personen.models import Personen
+
+
+class Aanwezigheid(models.Model):
+
+      status = (('Actief','Actief'), ('Inactief','Inactief'))
+
+      persoon = models.ForeignKey(Personen, on_delete=models.CASCADE)
+    
+      
+      datum = models.DateField()
+      begintijd = models.TimeField()
+      eindtijd = models.TimeField()
+      status = models.CharField(max_length=100, choices=status)
+
+      class Meta:
+        verbose_name_plural = "Aanwezigheid"
+```
 | id        | datum           | begintijd  | eindtijd | status| persoon_id
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
 | 22|2021-03-08|09:00:00|10:00:00|Actief|2 |
