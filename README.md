@@ -316,3 +316,4 @@ Output persoon_minuten_delta_list
 ['Coen  begintijd:09:15:00 eindtijd:10:30:00', datetime.datetime(2021, 3, 7, 10, 30)]
 ```
 
+De volgende stap is om te controleren in deze list waar de minuten overeenkomen per persoon
