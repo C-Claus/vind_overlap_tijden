@@ -165,3 +165,7 @@ urlpatterns =   [   path('aanwezigheid/<int:persoon>', views.aanwezigheid, name=
                     path('aanwezigheids_overzicht_per_dag', views.aanwezigheid_dagoverzicht, name="aanwezigheid_dagoverzicht"),
                  ]
 ```                    
+
+# visualisatie 
+
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/claus_portaal.png" alt="drawing" width="200"/>
