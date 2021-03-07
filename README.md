@@ -168,4 +168,12 @@ urlpatterns =   [   path('aanwezigheid/<int:persoon>', views.aanwezigheid, name=
 
 # visualisatie 
 
-<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/claus_portaal.png" alt="drawing" width="200"/>
+```html http://127.0.0.1:8000/claus_portaal ```
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/claus_portaal.png" alt="drawing" width="600"/>
+
+```html http://127.0.0.1:8000/aanwezigheid/3 3 is in urls.py <int:persoon_id> ```
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/anwezigheid_slash_persoon_id.pngl.png" alt="drawing" width="600"/>
+
+```html http://127.0.0.1:8000/aanwezigheids_overzicht_per_dag ```
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/aanwezigheids_overzicht_per_dag.png" alt="drawing" width="600"/>
+
