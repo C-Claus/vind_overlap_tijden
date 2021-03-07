@@ -38,7 +38,7 @@ class Personen(models.Model):
 
     def __str__(self):
         return self.naam
-```python
+```
 
 Het "Aanwezigheid datamodel
 
