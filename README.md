@@ -2,7 +2,7 @@
 Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma toont vervolgens of afwezigheidsperiodes elkaar overlappen.
 
 Visuele weergave
-<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/aanwezigheids_overzicht_per_dag.png" alt="drawing" width="300"/>
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/weergave_afwezigheid_strokenplanning.png" alt="drawing""/>
 
 # Gebruikte tools
 * Python 3.8
