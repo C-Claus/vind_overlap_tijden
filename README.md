@@ -3,7 +3,13 @@ Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het prog
 
 # Gebruikte tools
 * Python 3.8
-* Django 3.0.6 (inclusief crispy_forms, tables2, CDN bootstrap en Google Charts)
+  * datetime
+* Django 3.0.6
+  * crispy_forms
+  * tables2
+  * Google Charts
+  
+
 
 
 # models.py (Definitie datamodel)
