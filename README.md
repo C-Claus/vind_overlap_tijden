@@ -133,7 +133,9 @@ def aanwezigheid(response, persoon):
                                                                "persoon":persoon}
                                                                )
 ```
-# templates.py 
+# templates (map met HTML bestanden)
+
+Templates is een map waarin de variabelen uit views.py gerenderd kunnen worden en response.POST kunnen worden teruggestuurd naar de views.py
 
 ```html
 {% include "claus_portaal/base.html" %}
