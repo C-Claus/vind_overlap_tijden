@@ -77,9 +77,10 @@ De volgende records uit het ```Aanwezigheid``` datamodel zullen gebruikt worden 
 
 | id        | datum           | begintijd  | eindtijd | status| persoon_id
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
-| 22|2021-03-08|09:00:00|10:00:00|Actief|2 |
 | 24|2021-03-07|09:00:00|10:00:00|Actief|1 |
 | 25|2021-03-07|09:30:00|11:00:00|Actief|2 |
+| 25|2021-03-07|09:15:00|10:30:00|Actief|3 |
+
 
 
 # forms.py 
@@ -296,7 +297,7 @@ Output persoon_minuten_delta_list
 ['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 4)]
 ['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 5)]
 ....
-'Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 57)]
+['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 57)]
 ['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 58)]
 ['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 9, 59)]
 ['Harm  begintijd:09:00:00 eindtijd:10:00:00', datetime.datetime(2021, 3, 7, 10, 0)]
