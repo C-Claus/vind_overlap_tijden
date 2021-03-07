@@ -1,24 +1,48 @@
 # vind_overlap_tijden
-Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma moet vervolgens kunnen tonen of afwezigheidsperiodes elkaar overlappen.
+Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma toont vervolgens of afwezigheidsperiodes elkaar overlappen.
 
 # gebruikte tools
-Python 3.8
-Django 3.0.6
+* Python 3.8
+* Django 3.0.6
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
 
 # Definitie datamodel
+Er zijn twee datamodellen gedefinieerd voor dit programma, "Personen" en "Aanwezigheid"
+
+Het "Personen" datamodel
 
 ```python
-from django.db import models
+class Personen(models.Model):
 
-from claus_personen.models import Personen
+    gebruikersgroep_status = (("Administratie","Administratie"), ("Vestigingleider","Vestigingleider"), ("Teamleider","Teamleider"), ("Uitvoerend","Uitvoerend"))
 
 
+    in_dienst_status = (('Ja','Ja'),('Nee','Nee'),)
+    goedkeurder_status  = (('Ja','Ja'),('Nee','Nee'),)
+
+    persoonnr = models.CharField(max_length=30)
+    naam = models.CharField(max_length=100)
+    administratie_werkgever = models.ForeignKey(BedrijfsAdministratie, on_delete=models.CASCADE)
+    in_dienst_status = models.CharField(max_length=200, choices=in_dienst_status)
+
+    gebruikersgroep  = models.CharField(max_length=200, choices=gebruikersgroep_status)
+ 
+   
+    
+
+    #User model komt uit de standaard Django tabel
+    account = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "Personen"
+
+    def __str__(self):
+        return self.naam
+```python
+
+Het "Aanwezigheid datamodel
+
+```python
 class Aanwezigheid(models.Model):
 
       status = (('Actief','Actief'), ('Inactief','Inactief'))
@@ -34,6 +58,7 @@ class Aanwezigheid(models.Model):
       class Meta:
         verbose_name_plural = "Aanwezigheid"
 ```
+
 | id        | datum           | begintijd  | eindtijd | status| persoon_id
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
 | 22|2021-03-08|09:00:00|10:00:00|Actief|2 |
