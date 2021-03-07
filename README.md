@@ -97,4 +97,38 @@ class AanwezigheidsForm(ModelForm):
 
 # views.py
 
-In views.py kunnen de bewerkingen gedaan
+In views.py kunnen de bewerkingen gedaan en vind de interactie met gebruiker plaats.
+
+```python
+def aanwezigheid(response, persoon):
+
+    persoon = Personen.objects.get(id=persoon)
+    persoon_id = Personen.objects.filter(account_id=response.user.id).values_list('id', flat=True)[0]
+    aanwezigheid_form = AanwezigheidsForm(initial={'persoon': persoon,  'status':'Actief'})
+
+    aanwezigheid_form.fields['status'].widget = forms.HiddenInput()
+    aanwezigheid_form.fields['persoon'].widget = forms.HiddenInput()
+
+    if response.method == 'POST':
+        
+        if 'save' in response.POST:
+            aanwezigheid_form = AanwezigheidsForm(response.POST)
+            aanwezigheid_form.save()
+
+            #https://docs.djangoproject.com/en/3.1/ref/forms/api/#django.forms.Form.cleaned_data
+            cleaned_data = aanwezigheid_form.cleaned_data
+            aanwezigheid_datum =  Aanwezigheid()
+            aanwezigheid_datum.datum = cleaned_data['datum']
+
+            jaar = aanwezigheid_datum.datum.year
+            maand = aanwezigheid_datum.datum.month
+            dag = aanwezigheid_datum.datum.day
+
+            url = reverse('aanwezigheids_overzicht', kwargs={ 'persoon_id': persoon_id,  'jaar': jaar, 'maand':maand, 'dag':dag })
+            return HttpResponseRedirect(url)
+            
+
+    return render(response, "aanwezigheid/aanwezigheid.html", {"aanwezigheid_form":aanwezigheid_form,
+                                                               "persoon":persoon}
+                                                               )
+```
