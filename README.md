@@ -1,4 +1,4 @@
-# vind_overlap_tijden
+# Vind overlappende tijden
 Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma toont vervolgens of afwezigheidsperiodes elkaar overlappen.
 
 # gebruikte tools
@@ -14,9 +14,6 @@ Het "Personen" datamodel
 ```python
 class Personen(models.Model):
 
-    gebruikersgroep_status = (("Administratie","Administratie"), ("Vestigingleider","Vestigingleider"), ("Teamleider","Teamleider"), ("Uitvoerend","Uitvoerend"))
-
-
     in_dienst_status = (('Ja','Ja'),('Nee','Nee'),)
     goedkeurder_status  = (('Ja','Ja'),('Nee','Nee'),)
 
@@ -27,9 +24,6 @@ class Personen(models.Model):
 
     gebruikersgroep  = models.CharField(max_length=200, choices=gebruikersgroep_status)
  
-   
-    
-
     #User model komt uit de standaard Django tabel
     account = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -49,7 +43,6 @@ class Aanwezigheid(models.Model):
 
       persoon = models.ForeignKey(Personen, on_delete=models.CASCADE)
     
-      
       datum = models.DateField()
       begintijd = models.TimeField()
       eindtijd = models.TimeField()
@@ -58,6 +51,8 @@ class Aanwezigheid(models.Model):
       class Meta:
         verbose_name_plural = "Aanwezigheid"
 ```
+
+De volgende records uit het "Aanwezigheid" datamodel zullen gebruikt worden als voorbeeld om overlappende tijden te vinden.
 
 | id        | datum           | begintijd  | eindtijd | status| persoon_id
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
