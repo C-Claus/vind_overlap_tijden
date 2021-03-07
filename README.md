@@ -200,9 +200,7 @@ urlpatterns =   [   path('aanwezigheid/<int:persoon>', views.aanwezigheid, name=
 
 # Benadering 
 
-Er zijn meerdere manieren mogelijk om de raakvlakken te vinden, mijn idee is om een minuut_standlijn per minuut te laten itereren door de dag.
-Als de minuut_standlijn zich bevind in een tijddelta van een gebruiker.
-Een dictionary is hier het meest geschikt voor waarbij: key=persoon, value=tijddelta_minuten
+Er zijn meerdere manieren mogelijk om de raakvlakken te vinden, mijn aanpak is door eerst per persoon de tijddeltas te definieren als een lijst van minuten. Deze lijst stop ik ik een dictionary.  waarbij: key=persoon, value=tijddelta_minuten
 
 
 in pseudocode:
@@ -225,9 +223,9 @@ Door de overlap te arceren kan het iets duidelijker worden waar de overlappingen
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/02_overzicht.PNG" alt="drawing" width="800"/>
 
 ```python
-##################################################
-### 1 maak een list van standlijnen per minuut ###
-##################################################
+###################################
+### 1 maak een list van minuten ###
+###################################
 
 #aanname dat een werkdag loopt van 8:00 tot 18:00
 #integer  480 = 8:00
@@ -261,7 +259,9 @@ De output van ```python minuten ``` list
 2021-03-07 18:00
 ```
 
+Het is dus mogelijk om een lijst van minuten te maken, in een dag gaan 1440 minuten. 
 De volgende stap is om van alle gebruikers die hun afwezigheid hebben opgegeven voor die dag een tijddelta Δt
+
 * Δt Harm = [eindtijd-begintijd] 
 * Δt Thijs = [eindtijd-begintijd]
 * Δt Coen = [eindtijd-begintijd]
@@ -300,7 +300,10 @@ vandaag  = datetime.datetime(jaar, maand, dag)
 
             for k in range(0, int(seconds)+60, int(step.total_seconds())):
                 persoon_overige_minuten_delta_list.append([ (i.persoon.naam), start + (timedelta(seconds=k))])
-                persoon_overige_dict[i.persoon.naam] = persoon_overige_minuten_delta_list
+                #persoon_overige_dict[i.persoon.naam] = persoon_overige_minuten_delta_list
+                
+                #door 'Overige' als key te gebruiken wordt er maar één dictionary gemaakt. 
+                persoon_overige_dict['Overige'] = persoon_overige_minuten_delta_list
 ```
 
 Output ``` persoon_ingelogd_dict```
@@ -325,8 +328,8 @@ datetime.datetime(2021, 3, 7, 10, 29), datetime.datetime(2021, 3, 7, 10, 30), da
 ```
 
 Om de overlap te vinden kan de de volgende functie  gebruikt worden
+```set``` geeft een list terug met alleen unieke waarden, door de twee listen te verenigen met &
 
-set geeft een list terug met alleen unieke waarden, door de twee listen te verenigen met &
 ```python
 overlap_list = sorted(set(persoon_ingelogd_minuten_delta_list) & set(persoon_overige_minuten_delta_list))
 ```
@@ -410,3 +413,6 @@ Output van ```overlap_list```
 2021-03-07 10:29:00
 2021-03-07 10:30:00
 ```
+
+Een visuele controle laat zien dat dit alle overlappende minuten van de gebruiker Coen zijn, het laat echter nog niet zien met wie de overlapping heeft plaatsgevonden.
+Daarvoor moeten we de key van de dictionary gebruiken.
