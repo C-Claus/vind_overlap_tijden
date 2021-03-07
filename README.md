@@ -273,17 +273,34 @@ Waarbij de waarde van [eindtijd-begintijd] een list is in minuten
 ### 2 defineer een verzameling  van tijddeltas per key ###
 ##########################################################
 
-persoon_minuten_delta_list  = []
 vandaag  = datetime.datetime(jaar, maand, dag)
 
-for i in afwezigheid_per_dag:
-    start = date_time.combine(vandaag, i.begintijd)
-    seconds = (date_time.combine(vandaag, i.eindtijd) - date_time.combine(vandaag, i.begintijd)).total_seconds()
+    persoon_ingelogd_minuten_delta_list  = []
+    persoon_overige_minuten_delta_list  = []
 
-    step = timedelta(minutes=1)
+    persoon_ingelogd_dict = {}
+    persoon_overige_dict = {}
 
-    for j in range(0, int(seconds)+60, int(step.total_seconds())):
-        persoon_minuten_delta_list.append([str(i.persoon) + " begintijd:" + str(i.begintijd) + " eindtijd:" +  str(i.eindtijd) ,  (start) + (timedelta(seconds=j))])
+    #loop over het datamodel
+    for i in afwezigheid_per_dag:
+
+        #initialiseer de minuten
+        start = date_time.combine(vandaag, i.begintijd)
+        seconds = (date_time.combine(vandaag, i.eindtijd) - date_time.combine(vandaag, i.begintijd)).total_seconds()
+        step = timedelta(minutes=1)
+        
+        #controleer wie is ingelogd
+        if str(Personen.objects.filter(account_id=response.user.id)[0]) == str(i.persoon):   
+
+            for j in range(0, int(seconds)+60, int(step.total_seconds())):
+                persoon_ingelogd_minuten_delta_list.append([ (i.persoon.naam), start + (timedelta(seconds=j))])
+                persoon_ingelogd_dict[i.persoon.naam] = persoon_ingelogd_minuten_delta_list
+
+        else:
+
+            for k in range(0, int(seconds)+60, int(step.total_seconds())):
+                persoon_overige_minuten_delta_list.append([ (i.persoon.naam), start + (timedelta(seconds=k))])
+                persoon_overige_dict[i.persoon.naam] = persoon_overige_minuten_delta_list
 ```
 
 Output persoon_minuten_delta_list
