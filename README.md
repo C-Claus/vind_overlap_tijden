@@ -61,4 +61,31 @@ De volgende records uit het ```Aanwezigheid``` datamodel zullen gebruikt worden 
 | 25|2021-03-07|09:30:00|11:00:00|Actief|2 |
 
 
+# forms
+
+Met een Model based form kan snel een HTML formulier gedefinieerd worden met bootstrap stijl
+
+```python
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+
+class AanwezigheidsForm(ModelForm):
+
+    class Meta:
+        model = Aanwezigheid
+        fields = [  
+                    
+                    'datum',
+                    'begintijd',
+                    'eindtijd',
+                    'status',
+                    'persoon',
+                    ]
+
+        widgets = {'datum':DateInput(), 'begintijd':TimeInput(),'eindtijd':TimeInput()}  
+```
+
 
