@@ -1,12 +1,9 @@
 # Vind overlappende tijden
 Een klein programma waarin medewerkers hun afwezigheden kunnen opgeven. Het programma toont vervolgens of afwezigheidsperiodes elkaar overlappen.
 
-
-
-
 # Visuele weergave
 
-Een strokenplanning laat zien aan de gebruiker waar de tijden elkaar raken.
+Een strokenplanning m.b.v. Google Charts laat zien aan de gebruiker waar de tijden elkaar raken.
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="800"/>
 
@@ -203,8 +200,7 @@ urlpatterns =   [   path('aanwezigheid/<int:persoon>', views.aanwezigheid, name=
 # Benadering 
 
 Er zijn meerdere manier mogelijk om de raakvlakken te vinden, mijn idee is om een standlijn per minuut te laten itereren door de dag.
-
-
+Even een recap van bovenstaande afbeeldingen ter geheugenondersteuning
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/00_overzicht.PNG" alt="drawing" width="800"/>
 
 Door de begintijd en eindtijd te markeren met rode standlijnen is inzichtelijk hoe deze weergave zich verhoudt tot het datamodel
@@ -214,3 +210,42 @@ Door de begintijd en eindtijd te markeren met rode standlijnen is inzichtelijk h
 Door de overlap te arceren kan het iets duidelijker worden waar de overlappingen zich bevinden
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/02_overzicht.PNG" alt="drawing" width="800"/>
+
+```python
+##################################################
+### 1 maak een list van standlijnen per minuut ###
+##################################################
+
+#aanname dat een werkdag loopt van 8:00 tot 18:00
+#integer  480 = 8:00
+#integer  1080 = 18:00
+
+#integer 0 = 0:00
+#integer 1440 = 23:59
+
+#https://stackoverflow.com/questions/39298054/generating-15-minute-time-interval-array-in-python
+
+datum_list = [datetime.datetime(jaar, maand, dag) + datetime.timedelta(minutes=1*x) for x in range(479, 1081)]    
+minuten_list = [x.strftime('%Y-%m-%d %H:%M ') for x in datum_list]
+```    
+
+De output van ```python minuten ``` list
+
+```python
+2021-03-07 07:59 
+2021-03-07 08:00
+2021-03-07 08:01
+2021-03-07 08:02
+2021-03-07 08:03
+..
+..
+2021-03-07 17:54
+2021-03-07 17:55
+2021-03-07 17:56
+2021-03-07 17:57
+2021-03-07 17:58
+2021-03-07 17:59
+2021-03-07 18:00
+```
+
+
