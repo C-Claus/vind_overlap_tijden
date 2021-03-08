@@ -474,7 +474,7 @@ Output ```overlap_per_naam_list```
 [[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 59)], [datetime.datetime(2021, 3, 7, 9, 59)]]
 [[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 10, 0)], [datetime.datetime(2021, 3, 7, 10, 0)]]
 [[<Personen: Coen>, datetime.datetime(2021, 3, 7, 10, 0)], [datetime.datetime(2021, 3, 7, 10, 0)]]
-
+```
 
 # Conclusie
 
