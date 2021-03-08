@@ -222,44 +222,6 @@ Door de overlap te arceren kan het iets duidelijker worden waar de overlappingen
 
 <img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/02_overzicht.PNG" alt="drawing" width="800"/>
 
-```python
-###################################
-### 1 maak een list van minuten ###
-###################################
-
-#aanname dat een werkdag loopt van 8:00 tot 18:00
-#integer  480 = 8:00
-#integer  1080 = 18:00
-
-#integer 0 = 0:00
-#integer 1440 = 23:59
-
-#https://stackoverflow.com/questions/39298054/generating-15-minute-time-interval-array-in-python
-
-datum_list = [datetime.datetime(jaar, maand, dag) + datetime.timedelta(minutes=1*x) for x in range(479, 1081)]    
-minuten_list = [x.strftime('%Y-%m-%d %H:%M ') for x in datum_list]
-```    
-
-De output van ```python minuten ``` list
-
-```python
-2021-03-07 07:59 
-2021-03-07 08:00
-2021-03-07 08:01
-2021-03-07 08:02
-2021-03-07 08:03
-..
-..
-2021-03-07 17:54
-2021-03-07 17:55
-2021-03-07 17:56
-2021-03-07 17:57
-2021-03-07 17:58
-2021-03-07 17:59
-2021-03-07 18:00
-```
-
-Het is dus mogelijk om een lijst van minuten te maken, in een dag gaan 1440 minuten. 
 De volgende stap is om van alle gebruikers die hun afwezigheid hebben opgegeven voor die dag een tijddelta Δt
 
 * Δt Harm = [eindtijd-begintijd] 
@@ -273,7 +235,7 @@ Waarbij de waarde van [eindtijd-begintijd] een list is in minuten
 ### 2 defineer een verzameling  van tijddeltas per key ###
 ##########################################################
 
-vandaag  = datetime.datetime(jaar, maand, dag)
+    vandaag  = datetime.datetime(jaar, maand, dag)
 
     persoon_ingelogd_minuten_delta_list  = []
     persoon_overige_minuten_delta_list  = []
@@ -512,3 +474,15 @@ Output ```overlap_per_naam_list```
 [[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 59)], [datetime.datetime(2021, 3, 7, 9, 59)]]
 [[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 10, 0)], [datetime.datetime(2021, 3, 7, 10, 0)]]
 [[<Personen: Coen>, datetime.datetime(2021, 3, 7, 10, 0)], [datetime.datetime(2021, 3, 7, 10, 0)]]
+
+
+# Conclusie
+
+* begintijd en eindtijd is bekend per persoon
+* hiermee kan een tijddelta gemaakt worden (een list van minuten ( eindtijd-begintijd))
+* deze list kan in een dictionary worden gestopt, waarbij de key de persoon is.
+* door alle minuten van de overige personen (de niet ingelogd persoon) in een lijst te stoppen, kunnen de items van de list vergeleken worden met de items van de list van het ingelogde persoon. de matchende list items is waar de persoon overlap heeft
+* door de minuten te vergelijken van de persoon tijddelta dictionary kan weer worden herleid met wie de ingelogde persoon tegelijkertijd afwezig is
+* mochten er intervallen zijn op een afwezigheidsregistratie dan ziet dit script dit ook omdat er per minuut wordt vergeleken
+* script werkt alleen op dagregistratie
+
