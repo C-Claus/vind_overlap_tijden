@@ -277,6 +277,8 @@ vandaag  = datetime.datetime(jaar, maand, dag)
 
     persoon_ingelogd_minuten_delta_list  = []
     persoon_overige_minuten_delta_list  = []
+    
+    persoon_naam_overige_minuten_delta_list = []
 
     persoon_ingelogd_dict = {}
     persoon_overige_dict = {}
@@ -299,9 +301,11 @@ vandaag  = datetime.datetime(jaar, maand, dag)
         else:
 
             for k in range(0, int(seconds)+60, int(step.total_seconds())):
-                persoon_overige_minuten_delta_list.append([ (i.persoon.naam), start + (timedelta(seconds=k))])
-                #persoon_overige_dict[i.persoon.naam] = persoon_overige_minuten_delta_list
+                #voor later gebruik, aan het eind van he script
+                persoon_naam_overige_minuten_delta_list.append([i.persoon, start + (timedelta(seconds=k))])
                 
+                persoon_overige_minuten_delta_list.append(start + (timedelta(seconds=k)))
+               
                 #door 'Overige' als key te gebruiken wordt er maar één dictionary gemaakt. 
                 persoon_overige_dict['Overige'] = persoon_overige_minuten_delta_list
 ```
@@ -415,4 +419,96 @@ Output van ```overlap_list```
 ```
 
 Een visuele controle laat zien dat dit alle overlappende minuten van de gebruiker Coen zijn, het laat echter nog niet zien met wie de overlapping heeft plaatsgevonden.
-Daarvoor moeten we de key van de dictionary gebruiken.
+Daarvoor construren we een aparte lijst waar we de persoon kunnen toevoegen
+
+```python
+overlap_per_naam_list = []
+
+    for j in overlap_list:
+        for i in persoon_naam_overige_minuten_delta_list:
+            if i[1] == j:
+                overlap_per_naam_list.append( [i, [j]])
+
+```
+
+
+Output ```overlap_per_naam_list```
+
+```python
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 15)], [datetime.datetime(2021, 3, 7, 9, 15)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 16)], [datetime.datetime(2021, 3, 7, 9, 16)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 17)], [datetime.datetime(2021, 3, 7, 9, 17)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 18)], [datetime.datetime(2021, 3, 7, 9, 18)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 19)], [datetime.datetime(2021, 3, 7, 9, 19)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 20)], [datetime.datetime(2021, 3, 7, 9, 20)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 21)], [datetime.datetime(2021, 3, 7, 9, 21)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 22)], [datetime.datetime(2021, 3, 7, 9, 22)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 23)], [datetime.datetime(2021, 3, 7, 9, 23)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 24)], [datetime.datetime(2021, 3, 7, 9, 24)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 25)], [datetime.datetime(2021, 3, 7, 9, 25)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 26)], [datetime.datetime(2021, 3, 7, 9, 26)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 27)], [datetime.datetime(2021, 3, 7, 9, 27)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 28)], [datetime.datetime(2021, 3, 7, 9, 28)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 29)], [datetime.datetime(2021, 3, 7, 9, 29)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 30)], [datetime.datetime(2021, 3, 7, 9, 30)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 30)], [datetime.datetime(2021, 3, 7, 9, 30)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 31)], [datetime.datetime(2021, 3, 7, 9, 31)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 31)], [datetime.datetime(2021, 3, 7, 9, 31)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 32)], [datetime.datetime(2021, 3, 7, 9, 32)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 32)], [datetime.datetime(2021, 3, 7, 9, 32)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 33)], [datetime.datetime(2021, 3, 7, 9, 33)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 33)], [datetime.datetime(2021, 3, 7, 9, 33)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 34)], [datetime.datetime(2021, 3, 7, 9, 34)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 34)], [datetime.datetime(2021, 3, 7, 9, 34)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 35)], [datetime.datetime(2021, 3, 7, 9, 35)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 35)], [datetime.datetime(2021, 3, 7, 9, 35)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 36)], [datetime.datetime(2021, 3, 7, 9, 36)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 36)], [datetime.datetime(2021, 3, 7, 9, 36)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 37)], [datetime.datetime(2021, 3, 7, 9, 37)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 37)], [datetime.datetime(2021, 3, 7, 9, 37)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 38)], [datetime.datetime(2021, 3, 7, 9, 38)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 38)], [datetime.datetime(2021, 3, 7, 9, 38)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 39)], [datetime.datetime(2021, 3, 7, 9, 39)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 39)], [datetime.datetime(2021, 3, 7, 9, 39)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 40)], [datetime.datetime(2021, 3, 7, 9, 40)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 40)], [datetime.datetime(2021, 3, 7, 9, 40)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 41)], [datetime.datetime(2021, 3, 7, 9, 41)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 41)], [datetime.datetime(2021, 3, 7, 9, 41)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 42)], [datetime.datetime(2021, 3, 7, 9, 42)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 42)], [datetime.datetime(2021, 3, 7, 9, 42)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 43)], [datetime.datetime(2021, 3, 7, 9, 43)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 43)], [datetime.datetime(2021, 3, 7, 9, 43)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 44)], [datetime.datetime(2021, 3, 7, 9, 44)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 44)], [datetime.datetime(2021, 3, 7, 9, 44)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 45)], [datetime.datetime(2021, 3, 7, 9, 45)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 45)], [datetime.datetime(2021, 3, 7, 9, 45)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 46)], [datetime.datetime(2021, 3, 7, 9, 46)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 46)], [datetime.datetime(2021, 3, 7, 9, 46)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 47)], [datetime.datetime(2021, 3, 7, 9, 47)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 47)], [datetime.datetime(2021, 3, 7, 9, 47)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 48)], [datetime.datetime(2021, 3, 7, 9, 48)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 48)], [datetime.datetime(2021, 3, 7, 9, 48)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 49)], [datetime.datetime(2021, 3, 7, 9, 49)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 49)], [datetime.datetime(2021, 3, 7, 9, 49)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 50)], [datetime.datetime(2021, 3, 7, 9, 50)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 50)], [datetime.datetime(2021, 3, 7, 9, 50)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 51)], [datetime.datetime(2021, 3, 7, 9, 51)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 51)], [datetime.datetime(2021, 3, 7, 9, 51)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 52)], [datetime.datetime(2021, 3, 7, 9, 52)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 52)], [datetime.datetime(2021, 3, 7, 9, 52)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 53)], [datetime.datetime(2021, 3, 7, 9, 53)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 53)], [datetime.datetime(2021, 3, 7, 9, 53)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 54)], [datetime.datetime(2021, 3, 7, 9, 54)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 54)], [datetime.datetime(2021, 3, 7, 9, 54)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 55)], [datetime.datetime(2021, 3, 7, 9, 55)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 55)], [datetime.datetime(2021, 3, 7, 9, 55)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 56)], [datetime.datetime(2021, 3, 7, 9, 56)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 56)], [datetime.datetime(2021, 3, 7, 9, 56)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 57)], [datetime.datetime(2021, 3, 7, 9, 57)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 57)], [datetime.datetime(2021, 3, 7, 9, 57)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 58)], [datetime.datetime(2021, 3, 7, 9, 58)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 58)], [datetime.datetime(2021, 3, 7, 9, 58)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 9, 59)], [datetime.datetime(2021, 3, 7, 9, 59)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 9, 59)], [datetime.datetime(2021, 3, 7, 9, 59)]]
+[[<Personen: Thijs>, datetime.datetime(2021, 3, 7, 10, 0)], [datetime.datetime(2021, 3, 7, 10, 0)]]
+[[<Personen: Coen>, datetime.datetime(2021, 3, 7, 10, 0)], [datetime.datetime(2021, 3, 7, 10, 0)]]
