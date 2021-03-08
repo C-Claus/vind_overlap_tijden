@@ -478,11 +478,11 @@ Output ```overlap_per_naam_list```
 
 # Conclusie
 
-* begintijd en eindtijd is bekend per persoon
-* hiermee kan een tijddelta gemaakt worden (een list van minuten ( eindtijd-begintijd))
-* deze list kan in een dictionary worden gestopt, waarbij de key de persoon is.
-* door alle minuten van de overige personen (de niet ingelogd persoon) in een lijst te stoppen, kunnen de items van de list vergeleken worden met de items van de list van het ingelogde persoon. de matchende list items is waar de persoon overlap heeft
-* door de minuten te vergelijken van de persoon tijddelta dictionary kan weer worden herleid met wie de ingelogde persoon tegelijkertijd afwezig is
-* mochten er intervallen zijn op een afwezigheidsregistratie dan ziet dit script dit ook omdat er per minuut wordt vergeleken
-* script werkt alleen op dagregistratie
+*  begintijd en eindtijd is bekend per persoon
+*  hiermee kan een tijddelta gemaakt worden (een list van minuten ( eindtijd-begintijd))
+*  deze list kan in een dictionary worden gestopt, waarbij de key de persoon is.
+*  door alle minuten van de overige personen (de niet ingelogd persoon) in een lijst te stoppen, kunnen de items van de list vergeleken worden met de items van de list van het ingelogde persoon. de matchende list items is waar de persoon overlap heeft
+*  door de minuten te vergelijken van de persoon tijddelta dictionary kan weer worden herleid met wie de ingelogde persoon tegelijkertijd afwezig is
+*  mochten er intervallen zijn op een afwezigheidsregistratie dan ziet dit script dit ook omdat er per minuut wordt vergeleken
+*  script werkt alleen op dagregistratie
 
