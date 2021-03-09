@@ -504,7 +504,7 @@ Output ```render_persoon_minuut_list``` Let wel op, hier zitten de intervallen n
 
 # Eindproduct
 
-<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/eindresultaat.PNG" alt="drawing" width="900"/>
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/eindresultaat.PNG" alt="drawing" width="1000"/>
 
 
 # Conclusie
