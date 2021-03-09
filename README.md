@@ -479,15 +479,19 @@ Output ```overlap_per_naam_list```
 Deze output geeft het antwoord waar de overlap zit, de output omzetten naar een voor mensen leesbare structuur gebeurt als volgt:
 
 ```python
-overlap_dict = defaultdict(list)
+#zet de list van lists om naar een dictionary met defaultdict, defaultdict kan een dynamische key bevatten ipv dict
+    overlap_dict = defaultdict(list)
 
-for naam, minuten in overlap_per_naam_list:
-    overlap_dict[naam].append(minuten)
-overlap_persoon_minuut_list = overlap_dict.items()   
+    for naam, minuten in overlap_per_naam_list:
+        overlap_dict[naam].append(minuten)
 
-render_persoon_minuut_list = []
-for i in overlap_persoon_minuut_list:
-    render_persoon_minuut_list.append([i[0], i[1][0], i[1][-1]])
+    overlap_persoon_minuut_list = overlap_dict.items()   
+
+
+    #fatsoeneer de lijst om mooi te renderen in HTML
+    render_persoon_minuut_list = []
+    for i in overlap_persoon_minuut_list:
+        render_persoon_minuut_list.append([i[0], i[1][0], i[1][-1]])  
 ```
 
 Output ```render_persoon_minuut_list``` Let wel op, hier zitten de intervallen niet meer tussen, dit zijn allen de begin en eindtijden van de overlapping gemaakt ten behoeve voor leesbaarheid gebruiker. 
