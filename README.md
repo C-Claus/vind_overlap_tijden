@@ -501,6 +501,12 @@ Output ```render_persoon_minuut_list``` Let wel op, hier zitten de intervallen n
 [<Personen: Thijs>, [datetime.datetime(2021, 3, 7, 9, 30)], [datetime.datetime(2021, 3, 7, 10, 0)]]
 ```
 
+
+# Eindproduct
+
+<img src="https://github.com/C-Claus/vind_overlap_tijden/blob/main/eindresultaat.PNG" alt="drawing" width="800"/>
+
+
 # Conclusie
 
 *  begintijd en eindtijd is bekend per persoon
@@ -510,4 +516,5 @@ Output ```render_persoon_minuut_list``` Let wel op, hier zitten de intervallen n
 *  door de minuten te vergelijken van de persoon tijddelta dictionary kan weer worden herleid met wie de ingelogde persoon tegelijkertijd afwezig is
 *  mochten er intervallen zijn op een afwezigheidsregistratie dan ziet dit script dit ook omdat er per minuut wordt vergeleken
 *  script werkt alleen op dagregistratie
+
 
