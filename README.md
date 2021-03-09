@@ -99,7 +99,6 @@ class AanwezigheidsForm(ModelForm):
     class Meta:
         model = Aanwezigheid
         fields = [  
-                    
                     'datum',
                     'begintijd',
                     'eindtijd',
@@ -381,15 +380,15 @@ Output van ```overlap_list```
 ```
 
 Een visuele controle laat zien dat dit alle overlappende minuten van de gebruiker Coen zijn, het laat echter nog niet zien met wie de overlapping heeft plaatsgevonden.
-Daarvoor construren we een aparte lijst waar we de persoon kunnen toevoegen
+Daarvoor maken we een aparte list waar we de persoon kunnen toevoegen
 
 ```python
 overlap_per_naam_list = []
 
-    for j in overlap_list:
-        for i in persoon_naam_overige_minuten_delta_list:
-            if i[1] == j:
-                overlap_per_naam_list.append( [i, [j]])
+for j in overlap_list:
+    for i in persoon_naam_overige_minuten_delta_list:
+        if i[1] == j:
+            overlap_per_naam_list.append( [i, [j]])
 
 ```
 
@@ -480,18 +479,18 @@ Deze output geeft het antwoord waar de overlap zit, de output omzetten naar een 
 
 ```python
 #zet de list van lists om naar een dictionary met defaultdict, defaultdict kan een dynamische key bevatten ipv dict
-    overlap_dict = defaultdict(list)
+overlap_dict = defaultdict(list)
 
-    for naam, minuten in overlap_per_naam_list:
-        overlap_dict[naam].append(minuten)
+for naam, minuten in overlap_per_naam_list:
+    overlap_dict[naam].append(minuten)
 
-    overlap_persoon_minuut_list = overlap_dict.items()   
+overlap_persoon_minuut_list = overlap_dict.items()   
 
 
-    #fatsoeneer de lijst om mooi te renderen in HTML
-    render_persoon_minuut_list = []
-    for i in overlap_persoon_minuut_list:
-        render_persoon_minuut_list.append([i[0], i[1][0], i[1][-1]])  
+#fatsoeneer de lijst om mooi te renderen in HTML
+render_persoon_minuut_list = []
+for i in overlap_persoon_minuut_list:
+    render_persoon_minuut_list.append([i[0], i[1][0], i[1][-1]])  
 ```
 
 Output ```render_persoon_minuut_list``` Let wel op, hier zitten de intervallen niet meer tussen, dit zijn alleen de begin en eindtijden van de overlapping gemaakt ten behoeve voor leesbaarheid gebruiker. 
