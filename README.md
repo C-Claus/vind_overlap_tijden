@@ -494,7 +494,7 @@ Deze output geeft het antwoord waar de overlap zit, de output omzetten naar een 
         render_persoon_minuut_list.append([i[0], i[1][0], i[1][-1]])  
 ```
 
-Output ```render_persoon_minuut_list``` Let wel op, hier zitten de intervallen niet meer tussen, dit zijn allen de begin en eindtijden van de overlapping gemaakt ten behoeve voor leesbaarheid gebruiker. 
+Output ```render_persoon_minuut_list``` Let wel op, hier zitten de intervallen niet meer tussen, dit zijn alleen de begin en eindtijden van de overlapping gemaakt ten behoeve voor leesbaarheid gebruiker. 
 
 ```
 [<Personen: Coen>, [datetime.datetime(2021, 3, 7, 9, 15)], [datetime.datetime(2021, 3, 7, 10, 0)]]
